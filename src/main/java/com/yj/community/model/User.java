@@ -70,4 +70,17 @@ public class User {
     public void setLogin(String login) {
         Login = login;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", accountId='" + accountId + '\'' +
+                ", token='" + token + '\'' +
+                ", gmtCreate=" + gmtCreate +
+                ", gmtModified=" + gmtModified +
+                ", Login='" + Login + '\'' +
+                '}';
+    }
 }
