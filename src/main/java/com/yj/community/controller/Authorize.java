@@ -2,6 +2,8 @@ package com.yj.community.controller;
 
 import com.yj.community.DtO.AccessTokenDTO;
 import com.yj.community.DtO.GithubUser;
+import com.yj.community.mapper.UserMapper;
+import com.yj.community.model.User;
 import com.yj.community.provider.GithubProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +22,8 @@ public class Authorize {
 
     @Autowired
     private GithubProvider githubProvider;
+    @Autowired
+    private UserMapper userMapper;
 
     @Value("${github.client.id}")
     private String clientId;
@@ -44,6 +48,15 @@ public class Authorize {
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser githubUser = githubProvider.getUser(accessToken);
         if(githubUser!=null){
+
+            User user = new User();
+            user.setToken(UUID.randomUUID().toString());
+            user.setName(githubUser.getName());
+            user.setAccountId(String.valueOf(githubUser.getId()));
+            user.setGmtCreate(System.currentTimeMillis());
+            user.setGmtModified(user.getGmtCreate());
+            user.setLogin(githubUser.getLogin());
+            userMapper.insert(user);
             //登陆成功 写session写cookie
             requst.getSession().setAttribute("user",githubUser);
             return "index";
