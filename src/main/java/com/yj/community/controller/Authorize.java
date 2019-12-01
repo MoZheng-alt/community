@@ -24,7 +24,7 @@ public class Authorize {
 
     @Autowired
     private GithubProvider githubProvider;
-    @Autowired
+    @Autowired(required = false)
     private UserMapper userMapper;
 
     @Value("${github.client.id}")
@@ -50,7 +50,7 @@ public class Authorize {
 
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser githubUser = githubProvider.getUser(accessToken);
-        if(githubUser!=null){
+        if(githubUser!=null&&githubUser.getId()!=null){
 
             User user = new User();
             String token = UUID.randomUUID().toString();

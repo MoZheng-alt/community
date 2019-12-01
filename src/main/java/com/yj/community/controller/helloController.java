@@ -22,19 +22,26 @@ public class helloController {
 
     @GetMapping("/")
     public String index(HttpServletRequest request){
+        User user=null;
         Cookie[] cookies = request.getCookies();
-        for (Cookie cookie : cookies) {
-            if(cookie.getName().equals("token")){
-                String token =cookie.getValue();
-                User user=userMapper.findByToken(token);
-                if(user!=null){
-                    System.out.println(user.toString());
+        if(cookies!=null){
+            for (Cookie cookie : cookies) {
+                if(cookie.getName().equals("token")){
+                    String token =cookie.getValue();
+                    user=userMapper.findByToken(token);
+                    user.setLogin(user.getName());
+                    if(user!=null){
+                        System.out.println(user.toString());
 
-                    request.getSession().setAttribute("user",user);
+                        request.getSession().setAttribute("user",user);
+                    }
+                    break;
                 }
-                break;
             }
+        }else{
+            request.getSession().setAttribute("user",null);
         }
+        boolean a=(request.getSession().getAttribute("user")==null);
 
         return "index";
     }
