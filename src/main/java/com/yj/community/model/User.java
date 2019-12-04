@@ -2,85 +2,37 @@ package com.yj.community.model;
 
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Loader;
 import com.sun.xml.internal.ws.api.ha.StickyFeature;
+import lombok.Data;
 
 /**
  * Created by 22154 on 2019/11/30.
  */
+@Data
 public class User {
     private Integer id;
     private String name;
-    private String accountId;
+    private String account_id;
     private String token;
-    private Long gmtCreate;
-    private Long gmtModified;
-    private String Login;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Long getGmtModified() {
-        return gmtModified;
-    }
-
-    public void setGmtModified(Long gmtModified) {
-        this.gmtModified = gmtModified;
-    }
-
-    public Long getGmtCreate() {
-        return gmtCreate;
-    }
-
-    public void setGmtCreate(Long gmtCreate) {
-        this.gmtCreate = gmtCreate;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLogin() {
-        return Login;
-    }
-
-    public void setLogin(String login) {
-        Login = login;
-    }
+    private Long gmt_create;
+    private Long gmt_modified;
+    private String login;
+    private String avatar_url;
+    private String account_mail;
+    private String password;
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", accountId='" + accountId + '\'' +
+                ", account_id='" + account_id + '\'' +
                 ", token='" + token + '\'' +
-                ", gmtCreate=" + gmtCreate +
-                ", gmtModified=" + gmtModified +
-                ", Login='" + Login + '\'' +
+                ", gmt_create=" + gmt_create +
+                ", gmt_modified=" + gmt_modified +
+                ", login='" + login + '\'' +
+                ", avatar_url='" + avatar_url + '\'' +
+                ", account_mail='" + account_mail + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

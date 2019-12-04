@@ -1,12 +1,13 @@
-package com.yj.community.model;
+package com.yj.community.DtO;
 
+import com.yj.community.model.User;
 import lombok.Data;
 
 /**
- * Created by 22154 on 2019/11/30.
+ * Created by 22154 on 2019/12/1.
  */
 @Data
-public class Question {
+public class QuestionDTO {
     private Integer id;
     private String title;
     private String description;
@@ -18,5 +19,5 @@ public class Question {
     private Integer view_count;
     private Integer like_count;
 
-
+    private User user;
 }

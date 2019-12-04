@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>登录/注册</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="jumbotron" style="height: 140px">
+    <div class="container">
+        <h2 class="text-center"><span class="text-primary">DMU</span>乐在沟通</h2>
+        <h5 class="text-center" style="color: gray">请登录，沟通是跨越心灵的桥梁</h5>
+    </div>
+</div>
+<div class="container" style="width: 400px">
+    <form action="/login" method="post">
+        <div class="form-group">
+            <label>你的邮箱</label>
+            <input type="email" class="form-control" id="email" th:value="${email}" name="email" placeholder="你的邮箱">
+        </div>
+        <div class="form-group">
+            <label>密码</label>
+            <input type="password" class="form-control" id="password" th:value="${password}" name="password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">登录</button>
+        <button href="/register" class="btn btn-default">前去注册</button>
+        <button type="submit" class="btn btn-default">忘记密码</button>
+
+        <a href="https://github.com/login/oauth/authorize?client_id=32cf5e47aa26bcc99f78&redirect_uri=http://localhost:8888/callback&scope=user&state=1">
+            <button type="button" class="btn btn-default" href="https://github.com/login/oauth/authorize?client_id=32cf5e47aa26bcc99f78&redirect_uri=http://localhost:8888/callback&scope=user&state=1">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>使用Github账号
+            </button>
+        </a>
+    </form>
+    <div class="container-fluid main">
+        <div class="row">
+            <div class="alert alert-danger col-lg-9 col-md-12 col-sm-12 col-xs-12" th:text="${error}" th:if="${error!= null}">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
